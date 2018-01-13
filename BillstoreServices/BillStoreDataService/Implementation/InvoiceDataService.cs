@@ -43,7 +43,7 @@ namespace DataService.Implementation
             var invoiceFilter = new TableQuery<Invoice>().Where(TableQuery.CombineFilters(
                 TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, userPhoneNumber),           
                 TableOperators.And,
-                TableQuery.GenerateFilterConditionForDate("TimeStamp", QueryComparisons.GreaterThanOrEqual, time)));
+                TableQuery.GenerateFilterConditionForDate("Timestamp", QueryComparisons.GreaterThanOrEqual, time)));
 
             var tableClient = _cloudStorageService.GetStorageTableClient();
             var table = tableClient.GetTableReference(_INVOICETABLENAME);
@@ -80,6 +80,17 @@ namespace DataService.Implementation
             var retrievedResult = await table.ExecuteAsync(retrieveOperation);
 
             return retrievedResult.Result as Invoice;
-        }       
+        }
+
+        public async Task UpdateUser(Invoice invoice)
+        {
+            var tableClient = _cloudStorageService.GetStorageTableClient();
+            var table = tableClient.GetTableReference(_INVOICETABLENAME);         
+
+            TableOperation updateOperation = TableOperation.InsertOrReplace(invoice);
+
+            // Execute the insert operation.
+            await table.ExecuteAsync(updateOperation);          
+        }
     }
 }

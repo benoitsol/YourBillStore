@@ -7,9 +7,16 @@ namespace BillStoreService.Model
     {
         public UserInfo(string phoneNumber, string countryCode): base(countryCode, phoneNumber)
         {
-            this.PhoneNumber = phoneNumber;
-            this.CountryCode = countryCode;
+            this.PhoneNumber = this.RowKey = phoneNumber;
+            this.CountryCode = this.PartitionKey = countryCode;
+            this.UserId = new Guid().ToString();
         }
+
+        public UserInfo()
+        {
+            this.UserId = new Guid().ToString();
+        }
+
         public string UserId { get; set; }
         public string PhoneNumber { get; set; }
         public string FirstName { get; set; }
