@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace BillStoreDataService.DataService.Interfaces
 {
-    public interface OtpServiceInterface
+    public interface IOtpDataService
     {
         Task<string> RequestOtp(string phoneNumber);
 

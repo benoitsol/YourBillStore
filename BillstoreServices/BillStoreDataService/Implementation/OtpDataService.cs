@@ -9,13 +9,13 @@ using System.Threading.Tasks;
 
 namespace DataService.Implementation
 {
-    public class OtpService : OtpServiceInterface
+    public class OtpDataService : IOtpDataService
     {
         private readonly CloudStorageService _cloudStorageService;
         private const string OTPTABLENAME= "OtpTable";
         private static Random rng = new Random();
 
-        public OtpService(string connectionString)
+        public OtpDataService(string connectionString)
         {
             _cloudStorageService = new CloudStorageService(connectionString);
         }
@@ -43,7 +43,7 @@ namespace DataService.Implementation
             var otpQuery = new TableQuery<OneTimePassword>().Where(TableQuery.CombineFilters(
                 TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "OTP"),
                 TableOperators.And,
-                TableQuery.GenerateFilterConditionForDate("TimeStamp", QueryComparisons.GreaterThanOrEqual, DateTime.Now.AddMinutes(-5))));
+                TableQuery.GenerateFilterConditionForDate("Timestamp", QueryComparisons.GreaterThanOrEqual, DateTime.Now.AddMinutes(-15))));
 
             var tableClient = _cloudStorageService.GetStorageTableClient();
             var table = tableClient.GetTableReference(OTPTABLENAME);
