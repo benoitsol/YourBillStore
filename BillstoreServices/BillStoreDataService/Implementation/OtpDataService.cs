@@ -41,7 +41,7 @@ namespace DataService.Implementation
         {
             var oneTimePasswords = new List<OneTimePassword>();
             var otpQuery = new TableQuery<OneTimePassword>().Where(TableQuery.CombineFilters(
-                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "OTP"),
+                TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "OTP" + DateTime.Now.ToString("YYYY-MM-DD")),
                 TableOperators.And,
                 TableQuery.GenerateFilterConditionForDate("Timestamp", QueryComparisons.GreaterThanOrEqual, DateTime.Now.AddMinutes(-15))));
 

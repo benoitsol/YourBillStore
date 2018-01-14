@@ -9,8 +9,8 @@ namespace BillStoreService.Model
     {
         public OneTimePassword(string phoneNumber, string otp)
         {
-            this.RowKey = phoneNumber + DateTime.Now.ToString("YYYY-MM-DD");
-            this.PartitionKey = "OTP";
+            this.RowKey = phoneNumber + DateTime.Now.ToString();
+            this.PartitionKey = "OTP" + DateTime.Now.ToString("YYYY-MM-DD");
             this.PhoneNumber = phoneNumber;
             this.OTPassword = otp;
             this.ExpiryTime = DateTime.Now.AddMinutes(5);

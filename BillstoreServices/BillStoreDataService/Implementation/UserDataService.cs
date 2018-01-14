@@ -30,7 +30,7 @@ namespace DataService.Implementation
             // Execute the insert operation.
             await table.ExecuteAsync(insertOperation);
 
-            TableOperation retrieveOperation = TableOperation.Retrieve<UserInfo>(user.PhoneNumber, user.CountryCode);
+            TableOperation retrieveOperation = TableOperation.Retrieve<UserInfo>(user.CountryCode, user.PhoneNumber);
 
             var retrievedResult = await table.ExecuteAsync(retrieveOperation);
 
