@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Services.Controllers
 {
     [Produces("application/json")]
-    [Route("api/[Users]")]
+    [Route("api/user")]
     public class UserController
     {
         private readonly UserService userService;

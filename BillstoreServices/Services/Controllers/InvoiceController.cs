@@ -11,7 +11,7 @@ using Services.BusinessServices;
 namespace Services.Controllers
 {
     [Produces("application/json")]
-    [Route("api/Invoice")]
+    [Route("api/invoice")]
     public class InvoiceController : Controller
     {
         private readonly InvoiceService invoiceService;
