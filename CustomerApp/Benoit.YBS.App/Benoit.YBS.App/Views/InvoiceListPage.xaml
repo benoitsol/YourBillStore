@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Benoit.YBS.App.Views.InvoiceListPage"
+              Title="{Binding Title}"
+             x:Name="BrowseItemsPage"
+             xmlns:local="clr-namespace:Benoit.YBS.App.Views;assembly=Benoit.YBS.App">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Refresh" Command ="{Binding ReloadInvoicesFromServer}" >
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource" Android="refresh.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <ToolbarItem Text="Settings" Clicked="Settings_Clicked" >
+            <ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource" Android="settings.png"/>
+            </ToolbarItem.Icon>
+        </ToolbarItem>
+        <!--<ToolbarItem Text="About" Clicked="AddItem_Clicked" >
+            --><!--<ToolbarItem.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource" Android="icon.png"/>
+            </ToolbarItem.Icon>--><!--
+        </ToolbarItem>-->
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView
+				x:Name="InvoicesList"                
+                ItemSelected="OnItemSelected"
+				ItemsSource="{Binding ItemsGrouped}"
+				IsGroupingEnabled="True"
+            	GroupDisplayBinding="{Binding Key}"
+            	HasUnevenRows="true"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                IsRefreshing="{Binding IsBusy, Mode=OneWay}"
+                IsPullToRefreshEnabled="True"
+                RowHeight="80">
+                <ListView.GroupHeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <local:GroupHeaderView/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.GroupHeaderTemplate>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.Padding>
+                                    <OnPlatform x:TypeArguments="Thickness" iOS="10,5" Android="10,5" />
+                                </Grid.Padding>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <StackLayout Grid.Column="1"
+                                             Padding="8"
+                                             Spacing="4"
+                                             VerticalOptions="Center">
+                                    <Label Text="{Binding SellerName}" Font="Bold, 16"  TextColor="#3498DB" LineBreakMode="NoWrap"/>
+                                    <Label Text="{Binding InvoiceDate}" FontSize="Small" LineBreakMode="WordWrap"/>
+                                </StackLayout>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Benoit.YBS.App.Views.InvoiceDetailPage"
+             Title="{Binding Title}">
+
+    <Grid>
+        <Grid.Resources>
+            <ResourceDictionary>
+                <!--<Style x:Key="HiddenStyle" TargetType="{x:Type GridViewColumnHeader}">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </Style>-->
+                <Style  TargetType="{x:Type ListViewItem}">
+                    <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    <Setter Property="VerticalAlignment" Value="Top"/>
+                </Style>
+            </ResourceDictionary>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" MaxHeight="110"/>
+            <RowDefinition Height="Auto" MaxHeight="35" />
+            <RowDefinition Height="Auto" MaxHeight="65"/>
+            <RowDefinition Height="Auto"  MaxHeight="20"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+
+
+
+        <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0" BackgroundColor="#2196F3">
+
+            <Label Text="{Binding Invoice.SellerName}"  Font="Bold,14" TextColor="White" Padding="10,0,0,0"/>
+            <Label Text="{Binding SellerAddress}" FontSize="14" TextColor="White" Padding="10,0,0,0"/>
+            <Label Text="{Binding Invoice.GstNumber}" FontSize="14" TextColor="White" Padding="10,0,0,5"/>
+        </StackLayout>
+
+
+
+        <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1" BackgroundColor="#2196F3">
+
+            <Label Text="{Binding Invoice.InvoiceNumber}"  Font="Bold,14" TextColor="White" HorizontalTextAlignment="End" Padding="0,0,10,0"/>
+            <Label Text="{Binding Invoice.InvoiceDate}" FontSize="14" TextColor="White" HorizontalTextAlignment="End" Padding="0,0,10,0"/>
+        </StackLayout>
+
+
+
+        <StackLayout Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="2" BackgroundColor="#2196F3">
+            <Label Text="{Binding Invoice.TotalValue}"  Font="Bold,18" TextColor="White" Padding="10,0,0,5" />
+        </StackLayout>
+
+        <StackLayout Orientation="Vertical" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Padding="10,0,0,0">
+            <Label Text="{Binding CustomerName}" Font="Bold,14" HorizontalTextAlignment="Start" />
+            <Label Text="{Binding Invoice.UserMobileNumber}" Font="14" HorizontalTextAlignment="Start"/>
+        </StackLayout>
+
+        <ContentView Padding="10,3,0,0">
+            <Label  Grid.Row="3" Grid.Column="0" BackgroundColor="#D7D7FF" Text="Items" 
+                    HorizontalOptions="Fill"  Font="DemiBold,14" TextColor="#2196F3" FontFamily="Arial" 
+                VerticalOptions="Fill" HorizontalTextAlignment="Start" 
+                     Padding="10,3,0,0"/>
+        </ContentView>
+
+        <ContentView Padding="0,3,10,0" >
+            <Label Grid.Row="3" Grid.Column="1" BackgroundColor="#D7D7FF" Text="Amount"
+                   HorizontalOptions="Fill"  Font="DemiBold,14" TextColor="#2196F3" FontFamily="Arial"
+                   VerticalOptions="Fill" HorizontalTextAlignment="End"  />
+        </ContentView>
+
+
+        <ListView x:Name="ItemsListView" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" 
+                  CachingStrategy="RecycleElement" HorizontalAlignment="Stretch" 
+                  SizeChanged="ItemsListView_SizeChanged" ItemsSource="{Binding ItemsList}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0" BackgroundColor="#2196F3">
+                                <Label x:Name="nameLabel" Text="{Binding ItemName}" TextColor="DarkGray"/>
+                                <Label x:Name="quantityLabel" Text="{Binding Quantity}" TextColor="DarkGray"/>
+                            </StackLayout>
+
+                            <Label x:Name="priceLabel" Grid.Column="1" Text="{Binding TotalPrice}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+            
+            
+            <ListView.View>
+                <GridView ColumnHeaderContainerStyle="{StaticResource HiddenStyle}">
+
+
+                    <GridViewColumn  >
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Vertical"   HorizontalAlignment="Stretch" Margin="0">
+                                    <TextBlock x:Name="nameLabel" Text="{Binding Name}" Height="18" Padding="0" Foreground="Black" FontSize="14" Margin="0" />
+                                    <TextBlock x:Name="quantityLabel" Text="{Binding Rate}" Height="16" Padding="0" Foreground="DarkGray" FontSize="14" Margin="0"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+
+
+                    </GridViewColumn>
+                    <GridViewColumn >
+                        <GridViewColumn.CellTemplate>
+
+                            <DataTemplate>
+                                <ContentControl Margin="0 0 -6 0" >
+                                    <StackPanel Orientation="Vertical"  HorizontalAlignment="Right" Margin="0"  >
+                                        <TextBlock x:Name="amountLabel" Text="{Binding Amount}" Foreground="Black"
+                                       HorizontalAlignment="Right"  TextAlignment="Right"  FontSize="14" VerticalAlignment="Top" TextWrapping="Wrap"  Margin="0" />
+                                        <TextBlock x:Name="dummyLabel" Text="  " Foreground="DarkGray" FontSize="14" Margin="0" Visibility="Hidden"/>
+                                    </StackPanel>
+                                </ContentControl>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+        
+        
+
+        <ListView x:Name="itemsListView"  ItemsSource="{Binding ItemsList}">
+            
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="0" BackgroundColor="#2196F3">
+                                <Label x:Name="nameLabel" Text="{Binding ItemName}" TextColor="DarkGray"/>
+                                <Label x:Name="quantityLabel" Text="{Binding Quantity}" TextColor="DarkGray"/>
+                            </StackLayout>
+
+                            <Label x:Name="priceLabel" Grid.Column="1" Text="{Binding TotalPrice}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+        <!--<Label Text="Total:" FontSize="Medium" Grid.Row="4" Grid.Column="0" HorizontalTextAlignment="End" HorizontalOptions="End" />
+        <Label Text="{Binding Invoice.TotalValue}" FontSize="Small" Grid.Row="4" Grid.Column="1" HorizontalTextAlignment="End" />
+        
+        <StackPanel Orientation="Vertical" Grid.Row="5" Grid.Column="0" >
+            <Label Text="Sub-Total:" FontSize="14"  HorizontalAlignment="Right" HorizontalContentAlignment="Right" Foreground="#2196F3" />
+            <Label Text="Total" FontSize="14"  HorizontalAlignment="Right" HorizontalContentAlignment="Right" Foreground="#2196F3" />
+        </StackPanel>-->
+
+    </Grid>
+
+
+    <!--<StackLayout Spacing="20" Padding="15" >
+        <Label Text="SellerName:" FontSize="Medium" />
+        <Label Text="{Binding Invoice.SellerName}" FontSize="Small"/>
+        <Label Text="Date:" FontSize="Medium" />
+        <Label Text="{Binding Invoice.InvoiceDate}" FontSize="Small"/>
+        <Label Text="Items:" FontSize="Medium" />
+        <Label Text="{Binding Invoice.Items}" FontSize="Small"/>
+    </StackLayout>-->
+</ContentPage>
