@@ -13,5 +13,6 @@ namespace BillStoreService.Model
         public double TaxAmount { get; set; }
         public double NetAmount { get; set; }
         public double GrossAmount { get; set; }
+        public int Quantity { get; set; }
     }
 }

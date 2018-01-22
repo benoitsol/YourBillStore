@@ -1,0 +1,6 @@
+C:\Benoit\BillStoreServices\billstore\BillStoreAdmin\Common\bin\Debug\Common.dll
+C:\Benoit\BillStoreServices\billstore\BillStoreAdmin\Common\bin\Debug\Common.pdb
+C:\Benoit\BillStoreServices\billstore\BillStoreAdmin\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
+C:\Benoit\BillStoreServices\billstore\BillStoreAdmin\Common\obj\Debug\Common.csproj.CoreCompileInputs.cache
+C:\Benoit\BillStoreServices\billstore\BillStoreAdmin\Common\obj\Debug\Common.dll
+C:\Benoit\BillStoreServices\billstore\BillStoreAdmin\Common\obj\Debug\Common.pdb

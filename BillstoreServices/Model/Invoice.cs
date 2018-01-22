@@ -27,9 +27,11 @@ namespace BillStoreService.Model
 
         public string SellerName { get; set; }        
 
-        // PaymentMode ModeOfPayment { get; set; }
+        PaymentMode ModeOfPayment { get; set; }
 
         public string SellerGstNumber { get; set; }
+
+        public string SellerPhoneNumber { get; set; }
 
         public double TotalGstAmount { get; set; }
 
@@ -45,9 +47,11 @@ namespace BillStoreService.Model
 
         public string BillItems { get; set; }
 
-        public double BillAmount { get; set; }
+        public double NetAmount { get; set; }
 
         public double ChangeReturned { get; set; }
+
+        public double GrossAmount { get; set; }
 
     }
 }

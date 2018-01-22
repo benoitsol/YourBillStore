@@ -17,7 +17,7 @@ namespace DataService.Interfaces
             var invoice = new Invoice("9886160634", (invoiceNumber + 1 ).ToString())
             {
                 BillId = value,
-                BillAmount = amount,
+                NetAmount = amount,
                 CashierId = "12BB",
                 CashierName = "dummy",
                 //ModeOfPayment = PaymentMode.CreditCard,
