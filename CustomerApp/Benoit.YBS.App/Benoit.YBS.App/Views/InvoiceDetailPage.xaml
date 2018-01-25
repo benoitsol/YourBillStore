@@ -75,7 +75,7 @@
         </ContentView>
 
 
-        <ListView x:Name="ItemsListView" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" 
+        <!--<ListView x:Name="ItemsListView" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" 
                   CachingStrategy="RecycleElement" HorizontalAlignment="Stretch" 
                   SizeChanged="ItemsListView_SizeChanged" ItemsSource="{Binding ItemsList}">
             <ListView.ItemTemplate>
@@ -155,7 +155,7 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
-        </ListView>
+        </ListView>-->
 
 
         <!--<Label Text="Total:" FontSize="Medium" Grid.Row="4" Grid.Column="0" HorizontalTextAlignment="End" HorizontalOptions="End" />
