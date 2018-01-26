@@ -13,12 +13,17 @@ namespace Benoit.YBS.App.ViewModels
         public IList<Item> ItemsList { get; set; }
         public string CustomerName { get; set; }
         public string SellerAddress { get; set; }
+        public string TotalValue { get; set; }
+
 
         public InvoiceDetailViewModel(Invoice invoice = null)
         {
             Invoice = invoice;
+            invoice.InvoiceNumber = string.IsNullOrEmpty(invoice.InvoiceNumber) ? "INV1.11" : invoice.InvoiceNumber;
+
             Title = invoice?.SellerName + "-" + invoice?.InvoiceDate;
-            CustomerName = "Manish";
+            TotalValue = "Rs." + invoice.TotalValue;
+            CustomerName =  "Manish";
             SellerAddress = "Bangalore";
             invoice.UserMobileNumber = "9886666666";
             ItemsList = new List<Item>();

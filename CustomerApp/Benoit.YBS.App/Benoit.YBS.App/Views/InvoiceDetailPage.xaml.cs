@@ -15,25 +15,13 @@ namespace Benoit.YBS.App.Views
 
         public InvoiceDetailPage(InvoiceDetailViewModel viewModel)
         {
+
+           
             InitializeComponent();
 
             BindingContext = this.viewModel = viewModel;
         }
 
-        public InvoiceDetailPage()
-        {
-            
-
-            InitializeComponent();
-
-            var item = new Invoice
-            {
-                SellerName = "Seller 1",
-                InvoiceDate = "22/12/2017"
-            };
-
-            viewModel = new InvoiceDetailViewModel(item);
-            BindingContext = viewModel;
-        }
+        
     }
 }
