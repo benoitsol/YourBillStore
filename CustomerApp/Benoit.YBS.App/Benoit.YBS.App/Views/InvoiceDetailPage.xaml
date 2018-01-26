@@ -45,20 +45,20 @@
             <Label Text="{Binding Invoice.UserMobileNumber}" Font="18" HorizontalTextAlignment="Start"/>
         </StackLayout>
 
-        <StackLayout Padding="10,3,0,0" Grid.Row="3" Grid.Column="0" BackgroundColor="#D7D7FF">
+        <StackLayout Padding="10,3,0,0" Grid.Row="3" Grid.Column="0" BackgroundColor="#E2E2E2">
             <Label    Text="Items" 
                     HorizontalOptions="Fill"  Font="Bold,18" TextColor="#2196F3" FontFamily="Arial" 
                 VerticalOptions="Fill" HorizontalTextAlignment="Start" />
         </StackLayout>
 
-        <StackLayout Padding="0,3,10,0" Grid.Row="3" Grid.Column="1" BackgroundColor="#D7D7FF">
+        <StackLayout Padding="0,3,10,0" Grid.Row="3" Grid.Column="1" BackgroundColor="#E2E2E2">
             <Label   Text="Amount"
                    HorizontalOptions="Fill"  Font="Bold,18" TextColor="#2196F3" FontFamily="Arial"
                    VerticalOptions="Fill" HorizontalTextAlignment="End"  />
         </StackLayout>
 
-        <ListView x:Name="itemsListView"  Grid.Row="4" Grid.ColumnSpan="2" MinimumHeightRequest="80" ItemsSource="{Binding ItemsList}" 
-                       VerticalOptions="Start">
+        <ListView x:Name="itemsListView"  Grid.Row="4" 
+                  Grid.ColumnSpan="2"  ItemsSource="{Binding ItemsList}"  >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

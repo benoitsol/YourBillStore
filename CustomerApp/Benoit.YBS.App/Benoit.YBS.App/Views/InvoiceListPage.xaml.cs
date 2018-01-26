@@ -27,6 +27,8 @@ namespace Benoit.YBS.App.Views
 
         async void OnItemSelected(object sender, SelectedItemChangedEventArgs args)
         {
+            
+
             var item = args.SelectedItem as Invoice;
             if (item == null)
                 return;

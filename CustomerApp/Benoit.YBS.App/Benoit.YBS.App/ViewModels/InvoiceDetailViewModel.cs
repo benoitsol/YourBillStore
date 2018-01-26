@@ -22,7 +22,7 @@ namespace Benoit.YBS.App.ViewModels
             invoice.InvoiceNumber = string.IsNullOrEmpty(invoice.InvoiceNumber) ? "INV1.11" : invoice.InvoiceNumber;
 
             Title = invoice?.SellerName + "-" + invoice?.InvoiceDate;
-            TotalValue = "Rs." + invoice.TotalValue;
+            
             CustomerName =  "Manish";
             SellerAddress = "Bangalore";
             invoice.UserMobileNumber = "9886666666";
@@ -31,12 +31,13 @@ namespace Benoit.YBS.App.ViewModels
             ItemsList.Add(new Item() { ItemName = "Item1122", Quantity = 3, TotalPrice = 230 });
             ItemsList.Add(new Item() { ItemName = "Item1133", Quantity = 1, TotalPrice = 230 });
             invoice.TotalValue = 232332;
+            TotalValue = "Rs." + invoice.TotalValue.ToString();
             //using (var ms = new MemoryStream(Encoding.Unicode.GetBytes(invoice?.ItemDetails)))
             //{
             //    DataContractJsonSerializer deserializer = new DataContractJsonSerializer(typeof(IList<Item>));
             //    ItemsList = (IList<Item>)deserializer.ReadObject(ms);
             //}
-                        
+
         }
     }
 }
