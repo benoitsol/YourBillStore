@@ -69,7 +69,11 @@
                             </Grid.ColumnDefinitions>
                             <StackLayout Orientation="Vertical" Grid.Column="0" Padding="10,0,0,0">
                                 <Label x:Name="nameLabel" Text="{Binding ItemName}" TextColor="#383838" HorizontalTextAlignment="Start" HorizontalOptions="Start"/>
-                                <Label x:Name="quantityLabel" Text="{Binding Quantity}" TextColor="#383838" HorizontalTextAlignment="Start" HorizontalOptions="Start"/>
+                                <StackLayout Orientation="Horizontal" Spacing="0">
+                                    <Label x:Name="quantityLabel" Text="{Binding Quantity}" TextColor="#383838" HorizontalTextAlignment="Start" HorizontalOptions="Start"/>                                    
+                                    <Label x:Name="productLabel" Text=" * " TextColor="#383838" HorizontalTextAlignment="Start" HorizontalOptions="Start"/>
+                                    <Label x:Name="rateLabel" Text="{Binding Rate}" TextColor="#383838" HorizontalTextAlignment="Start" HorizontalOptions="Start"/>                                    
+                                </StackLayout>
                             </StackLayout>
                             <StackLayout Orientation="Vertical" Grid.Column="1" Padding="0,0,10,0">
                                 <Label x:Name="priceLabel"  Text="{Binding TotalPrice}" HorizontalTextAlignment="End" HorizontalOptions="End"/>
