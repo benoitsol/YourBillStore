@@ -10,7 +10,7 @@ namespace Benoit.YBS.App.Droid
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-            System.Threading.Thread.Sleep(100);
+            //System.Threading.Thread.Sleep(100);
             StartActivity(typeof(MainActivity));
         }
     }
